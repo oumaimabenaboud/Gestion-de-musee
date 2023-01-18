@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gestmuseeapp'
+    'gestmuseeapp.app.GestmuseeappConfig',
 ]
 
 MIDDLEWARE = [

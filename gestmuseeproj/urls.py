@@ -18,5 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('gestmuseeapp.urls')),
+    path('signinup/', include('gestmuseeapp.urls')),
     path('admin/', admin.site.urls),
 ]
