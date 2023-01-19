@@ -5,12 +5,18 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User,auth
 from django.contrib import messages, auth
 from gestmuseeapp.models import abonne
+from .models import Event
 # Create your views here.
 from django.http import HttpResponse
 
 #home page
 def home(request):
     return render(request, 'home.html',{})
+
+def eventlist(request):
+    events = Event.objects
+    return render(request, 'Eventlist.html',{'events':events})
+
 
 #signup page
 def signinupPage(request):
