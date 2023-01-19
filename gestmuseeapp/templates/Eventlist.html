@@ -10,6 +10,7 @@
   <h1>Hello</h1>
   {% for event in events.all %}
               <p>{{event.start_day}}</p>
+              <img src="{{ event.image.url }}">
            <br>
                 <p > {{ event.notes }}</p>
  

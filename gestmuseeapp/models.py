@@ -17,6 +17,7 @@ class abonne(models.Model):
     
     def __str__(self):
         return self.user.username
+
 class Event(models.Model):
     title = models.CharField(u'Nom de la Manifestation', help_text=u'Nom de la Manifestation',max_length=100)
     theme = models.CharField(u'Thème de la Manifestation',help_text=u'Thème de la Manifestation',max_length=30,blank=True, null=True)

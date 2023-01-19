@@ -32,11 +32,11 @@ def signinupPage(request):
                 messages.warning(request,'Email taken')
                 return redirect('signinup/')
             else:
-                user = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
-                #user.save()
-                user_model = User.objects.get(username=email)
-                new_abonne = abonne.objects.create(user=user_model,id_user=user_model.id)
-                new_abonne.save()
+                myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
+                myuser.save()
+                # user_model = User.objects.get(username=email)
+                # new_abonne = abonne.objects.create(user=user,id_user=user.id)
+                # new_abonne.save()
                 messages.success(request, "Votre compte est crée .")
                 return redirect('home.html')
         else:
