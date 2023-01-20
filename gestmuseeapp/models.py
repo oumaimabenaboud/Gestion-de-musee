@@ -8,15 +8,18 @@ from django.core.exceptions import ValidationError
 from datetime import date
 # Create your models here.
 user = get_user_model()
-class abonne(models.Model):
-    username = models.ForeignKey(user, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    type = models.IntegerField()
-    
-    def __str__(self):
-        return self.user.username
+
+class Abonnee(models.Model):
+    prenom = models.CharField(max_length=255)
+    nom = models.CharField(max_length=255)
+    cni = models.CharField(max_length=10)
+    email = models.EmailField(unique=True)
+    carte_payement= models.CharField(max_length=16)
+    type_abonnement = models.CharField(max_length=255)
+    date_start = models.DateField()
+    date_end = models.DateField()
+    password = models.CharField(max_length=255)
+
 
 class Event(models.Model):
     title = models.CharField(u'Nom de la Manifestation', help_text=u'Nom de la Manifestation',max_length=100)
@@ -31,17 +34,7 @@ class Event(models.Model):
         verbose_name_plural = u'Manifestations'
     class EventAdmin(admin.ModelAdmin):
         list_display = ['title','theme','start_day', 'end_day', 'image', 'notes']
-    # def check_overlap(self, fixed_start, fixed_end, new_start, new_end):
-    #     overlap = False
-    #     if new_start == fixed_end or new_end == fixed_start:    #edge case
-    #         overlap = False
-    #     elif (new_start >= fixed_start and new_start <= fixed_end) or (new_end >= fixed_start and new_end <= fixed_end): #innner limits
-    #         overlap = True
-    #     elif new_start <= fixed_start and new_end >= fixed_end: #outter limits
-    #         overlap = True
- 
-    #     return overlap
- 
+
     def get_absolute_url(self):
         url = reverse('admin:%s_%s_change' % (self._meta.app_label, self._meta.model_name), args=[self.id])
         return u'<a href="%s">%s</a>' % (url, str(self.start_time))
@@ -49,23 +42,3 @@ class Event(models.Model):
     def clean(self):
         if self.end_day <= self.start_day:
             raise ValidationError("La date du début de l'événement doit être antérieure à celle de la fin de l'événement")
- 
-        # events = Event.objects.filter(day=self.day)
-        # if events.exists():
-        #     for event in events:
-        #         if self.check_overlap(event.start_time, event.end_time, self.start_time, self.end_time):
-        #             raise ValidationError(
-        #                 'There is an overlap with another event: ' + str(event.day) + ', ' + str(
-        #                     event.start_time) + '-' + str(event.end_time))
-
-# class Event(models.Model):
-#     day = models.DateField()
-#     start_time = models.TimeField()
-#     end_time = models.TimeField()
-#     notes = models.TextField()
-
-#     class Meta:
-#         ordering = ['day']
-
-#     class EventAdmin(admin.ModelAdmin):
-#         list_display = ['day', 'start_time', 'end_time', 'notes']

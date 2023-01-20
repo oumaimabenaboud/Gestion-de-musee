@@ -4,7 +4,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User,auth
 from django.contrib import messages, auth
-from gestmuseeapp.models import abonne
+from .models import Abonnee
+from datetime import datetime, timedelta
 from .models import Event
 # Create your views here.
 from django.http import HttpResponse
@@ -26,18 +27,24 @@ def signinupPage(request):
         email = request.POST['email']
         password1 = request.POST['password']
         password2 = request.POST['cpassword']
+        type_abonnement = request.POST['type_abonnement']
 
         if password1 == password2 :
             if User.objects.filter(email=email).exists():
                 messages.warning(request,'Email taken')
                 return redirect('signinup/')
             else:
-                myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
-                myuser.save()
+                # myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
+                # myuser.save()
                 # user_model = User.objects.get(username=email)
                 # new_abonne = abonne.objects.create(user=user,id_user=user.id)
                 # new_abonne.save()
+                abonnee = Abonnee.objects.create(prenom=first_name, nom=last_name, email=email, type_abonnement=type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=365), password=password1)
+                abonnee.save()
                 messages.success(request, "Votre compte est crée .")
+                # abonne = abonne.objects.create(prenom=first_name, nom=last_name, email=email, type_abonnement=type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=365), password=password1)
+                # abonne.save()
+                # messages.success(request, "Votre compte est crée .")
                 return redirect('home.html')
         else:
             messages.info(request,'password not matching')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import abonne
+from .models import Abonnee
 from .models import Event
 import datetime
 import calendar
@@ -9,7 +9,7 @@ from django.utils.safestring import mark_safe
 
 # Register your models here.
 
-admin.site.register(abonne)
+admin.site.register(Abonnee)
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ['title','theme','start_day', 'end_day', 'image', 'notes']

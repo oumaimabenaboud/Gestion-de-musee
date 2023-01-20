@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'gestmuseeproj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'gestionmuseedb',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'gestmuseedb2',
         'USER': 'postgres',
         'PASSWORD' :'ouma',
         'HOST' :'localhost',
