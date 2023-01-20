@@ -1,2 +1,5 @@
 Django==4.1.3
-myvenv\Scripts\Activate.bat
+virtualenvwrapper-win
+psycopg2 
+django-scheduler
+Pillow
