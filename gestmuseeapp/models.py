@@ -7,7 +7,6 @@ from django.urls import reverse
 from django.core.exceptions import ValidationError
 from datetime import date
 # Create your models here.
-user = get_user_model()
 
 class Abonnee(models.Model):
     prenom = models.CharField(max_length=255)
@@ -20,6 +19,24 @@ class Abonnee(models.Model):
     date_end = models.DateField()
     password = models.CharField(max_length=255)
 
+class Artist(models.Model):
+    nom = models.CharField(max_length=255)
+    date_naissance = models.DateField()
+    date_deces = models.DateField(blank=True, null=True)
+    nationalite = models.CharField(max_length=255)
+
+
+class Oeuvre(models.Model):
+    titre = models.CharField(max_length=255)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    type_ouevre = models.CharField(max_length=255)
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
+    type_assurence = models.CharField(max_length=255)
+
+class Salle(models.Model):
+    nom = models.CharField(max_length=50)
+    capacite = models.IntegerField()
+    est_valable = models.BooleanField()
 
 class Event(models.Model):
     title = models.CharField(u'Nom de la Manifestation', help_text=u'Nom de la Manifestation',max_length=100)
@@ -42,3 +59,32 @@ class Event(models.Model):
     def clean(self):
         if self.end_day <= self.start_day:
             raise ValidationError("La date du début de l'événement doit être antérieure à celle de la fin de l'événement")
+
+
+class Conference(models.Model):
+    titre = models.CharField(max_length=100)
+    theme = models.CharField(max_length=50,blank=True, null=True)
+    Conferencier = models.CharField(max_length=100)
+    date_debut = models.DateField()
+    duree = models.IntegerField(u'Durée de la conférence', help_text=u'Durée en minutes')
+    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='static/img/conference')
+    notes = models.TextField(blank=True, null=True)
+
+class Personel(models.Model):
+    nom = models.CharField(max_length=50)
+    Prenom = models.CharField(max_length=50)
+    is_available = models.BooleanField(default=True)
+
+    def check_availability(self, date):
+        schedule = Schedule.objects.filter(personel=self, date=date)
+        if schedule.exists():
+            return False
+        return True
+
+
+class Schedule(models.Model):
+    personel = models.ForeignKey(Personel, on_delete=models.CASCADE)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    date = models.DateField()

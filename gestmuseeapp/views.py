@@ -16,7 +16,7 @@ def home(request):
 
 def eventlist(request):
     events = Event.objects
-    return render(request, 'Eventlist.html',{'events':events})
+    return render(request, 'event.html',{'events':events})
 
 
 #signup page
