@@ -17,9 +17,12 @@ def home(request):
     # events = Event.objects.filter(start_day__gte=date.today())
     return render(request, 'home.html',{'events': events})
 
-def eventlist(request):
+def manifestation(request):
     events = Event.objects
-    return render(request, 'event.html',{'events':events})
+    return render(request, 'manifestation.html',{'events':events})
+
+def contact(request):
+    return render(request, 'contact.html',{})
 
 
 #signup page
