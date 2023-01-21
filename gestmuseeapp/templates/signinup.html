@@ -1,181 +1,66 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/Signinup.css' %}" />
-    <link rel="icon" type="image/png" href="{% static 'img/logow12.png'%}"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignIn-Up</title>
+    <link rel="stylesheet" href="{% static 'css/signinup.css' %}">
+    <title>Musée Dar El Bacha</title>
 </head>
-
 <body>
     
-    <div class="container">
-            <div class="alert alert-success m-2" id="popup" role="alert"> 
-                {% for message in messages %}
-                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                    {% if message.tags == 'error' %}
-                    <script>
-                        swal({
-                            title: "Erreur :(",
-                            text: "Le mot de passe que vous avez entrer est incorrect ressayer",
-                            icon: "warning",
-                            buttons: true,
-                          });
-                    </script>                    
-                    {% elif message.tags == 'warning'%}
-                    <script>
-                        swal({
-                            title: "Erreur :(",
-                            text: "L'email que vous avez entrer est déjà existé. Merci de le changer",
-                            icon: "warning",
-                            buttons: true,
-                          });
-                    </script>
-                    {% elif  message.tags == 'info'%}
-                    <script>
-                        swal({
-                            title: "Erreur :(",
-                            text: "Le mot de passe de confirmation ne correspond pas au premier mot de passe",
-                            icon: "warning",
-                            buttons: true,
-                          });
-                    </script>
-                    {% else %}
-                        <script>
-                            swal({
-                                title: "Très Bien :)",
-                                text: "Votre compte est crée avec succés",
-                                icon: "success",
-                                button: "Login !",
-                              });
-                        </script>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        <div class="forms-container">
-            <div class="signin-signup">
-                
-                <!--                    Sign in Forum                 -->
-                <form class="sign-in-form" method="post">
-                    {% csrf_token %}
-                    {{form1.as_p}}
-                    <h2 class="title" id="titre1">Connectez-vous</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="texte" placeholder="Email" name="username" required/>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Mot de passe" name="password" required/>
-                    </div>
-                    <input class="btn solid" type="submit" value="Connecter" name="btnform1"/>
-                    <!--
-                    <p class="social-text">Ou Inscrivez-vous avec les plateformes sociales</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                    -->
-                </form>
-                <!--                    Sign up Forum                 -->
-                <form class="sign-up-form" method="post">
-                    {% csrf_token %}
-                     {{form2.as_p}}
-                    <h2 class="title" id="titre">Inscrivez-vous</h2>
-                    <div class="input-name">
-                        <div class="input-field-custom" id="test1">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Prenom" name="first_name" required/>
-                        </div>    
-                        <div class="input-field-custom" id="test2">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Nom" name="last_name" required/>
-                        </div>
-                    </div>
-                    <div class="input-field" id="formulaire">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" name="email" required/>
-                    </div>
-                    <div class="input-field" id="formulaire">
-                        <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Type d'abonnement" name="type_abonnement" required/>
-                    </div>
-                    <div class="input-field" id="formulaire">
-                        <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="CNI" name="cni" required/>
-                    </div>
-                    <div class="input-field" id="formulaire">
-                        <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Numéro de carte de payement" name="carte_payement" required/>
-                    </div>
-                    <div class="input-field" id="formulaire">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Mot de passe" name="password" required/>
-                    </div>
-                    <div class="input-field" id="formulaire">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirmer Mot de passe" name="cpassword" required/>
-                    </div>
-                    <input type="submit" class="btn" value="Inscrire" id="formulaire" name="btnform2"/>
-                    <!--
-                        <p class="social-text" id="formulaire1">Ou Inscrivez-vous avec les plateformes sociales</p>
-                    <div class="social-media" id="formulaire1">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                    -->
-                </form>
-            </div>
-        </div>
-
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>Nouveau Ici ?</h3>
-                    <p>
-                        Rejoiniez nous dans la meilleur formation de la langue Anglaise
-                    </p>
-                    <button class="btn transparent" id="sign-up-btn">Inscrire</button>
-                </div>
-                <img src="{% static 'img/Signin1.svg' %}" class="image" alt="" />
-            </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>Un de nous ?</h3>
-                    <p>
-                       Bah ! Rebienvenue dans votre plateforme pour etudier la langue Anglaise
-                    </p>
-                    <button class="btn transparent" id="sign-in-btn">Connecter</button>
-                </div>
-                <img src="{% static 'img/Signin2.svg'%}" class="image" alt="" />
-            </div>
-        </div>
+<p class="tip">Click on button in image container</p>
+<div class="cont">
+  <div class="form sign-in">
+    <h2>Welcome back,</h2>
+    <label>
+      <span>Email</span>
+      <input type="email" />
+    </label>
+    <label>
+      <span>Password</span>
+      <input type="password" />
+    </label>
+    <p class="forgot-pass">Forgot password?</p>
+    <button type="button" class="submit">Sign In</button>
+    <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
+  </div>
+  <div class="sub-cont">
+    <div class="img">
+      <div class="img__text m--up">
+        <h2>New here?</h2>
+        <p>Sign up and discover great amount of new opportunities!</p>
+      </div>
+      <div class="img__text m--in">
+        <h2>One of us?</h2>
+        <p>If you already has an account, just sign in. We've missed you!</p>
+      </div>
+      <div class="img__btn">
+        <span class="m--up">Sign Up</span>
+        <span class="m--in">Sign In</span>
+      </div>
     </div>
-    <script src="{% static 'js/Signinup.js' %}"></script>
-</body>
+    <div class="form sign-up">
+      <h2>Time to feel like home,</h2>
+      <label>
+        <span>Name</span>
+        <input type="text" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" />
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" />
+      </label>
+      <button type="button" class="submit">Sign Up</button>
+      <button type="button" class="fb-btn">Join with <span>facebook</span></button>
+    </div>
+  </div>
+</div>
 
+<script src="{% static 'js/signinup.js' %}"></script>	
+</body>
 </html>
