@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from gestmuseeapp import views
 
 urlpatterns = [
     path('', include('gestmuseeapp.urls')),
-    path('signinup/', include('gestmuseeapp.urls')),
-    path('event/', include('gestmuseeapp.urls')),
+    # path('signinup/', include('gestmuseeapp.urls')),
+    # path('event/', include('gestmuseeapp.urls')),
     path('admin/', admin.site.urls),
 ]

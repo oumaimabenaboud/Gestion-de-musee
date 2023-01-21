@@ -1923,6 +1923,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .top-head-right ul li:hover a {
   color: #88d200;
+  float: right
 }
 
 #header.header-scrolled {

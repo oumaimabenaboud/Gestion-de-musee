@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from django.contrib import admin
 
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('signinup/',views.signinupPage, name="Signinup"),
-    path('event/',views.eventlist, name="Event"),
+    path('home.html', views.home, name='home'),
+    path('admin/', admin.site.urls),
+    path('signinup.html',views.signinupPage, name="Signinup"),
+    path('event.html',views.eventlist, name="Event"),
 ]

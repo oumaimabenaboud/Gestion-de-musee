@@ -35,14 +35,12 @@
 			  <header id="header" id="home">
 			  	<div class="container header-top">
 			  		<div class="row">
-				  		<div class="col-6 top-head-left">
-				  			<ul>
-				  				<li><a href="#">Visit Us</a></li>
-				  				<li><a href="#">Buy Ticket</a></li>
-				  			</ul>
-				  		</div>
+						<div class="col-6 top-head-left">
+							<ul>
+							</ul>
+						</div>
 				  		<div class="col-6 top-head-right">
-				  			<ul>
+				  			<ul class="ml-auto">
 		  						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -165,121 +163,17 @@
 					</div>						
 					<div class="row">
 						<div class="active-exibition-carusel">
-							<div class="single-exibition item">
-								<img src="{% static 'img/e1.jpg' %}" alt="">
+							{% for event in events.all %}
+							  <div class="single-exibition item">
+								<img src="{{ event.image.url }}" alt="">
 								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
+								  <li><a href="#">{{ event.theme }}</a></li>
 								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="{% static 'img/e2.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="{% static 'img/e3.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>							
-							<div class="single-exibition item">
-								<img src="{% static 'img/e1.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="{% static 'img/e2.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img src="{% static 'img/e3.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>							
-							<div class="single-exibition item">
-								<img src="{% static 'img/e1.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img class="img-fluid" src="{% static 'img/e2.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-
-							<div class="single-exibition item">
-								<img class="img-fluid" src="{% static 'img/e3.jpg' %}" alt="">
-								<ul class="tags">
-									<li><a href="#">Travel</a></li>
-									<li><a href="#">Life style</a></li>
-								</ul>
-								<a href="#"><h4>Portable latest blog for women</h4></a>
-								<p>
-									Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-								</p>
-								<h6 class="date">31st January, 2018</h6>
-							</div>
-						</div>													
+								<a href="#"><h4>{{ event.title }}</h4></a>
+								<h6 class="date"> du {{ event.start_day }} au {{ event.end_day }}</h6>
+							  </div>
+							{% endfor %}
+						  </div>													
 					</div>
 				</div>	
 			</section>

@@ -7,12 +7,15 @@ from django.contrib import messages, auth
 from .models import Abonnee
 from datetime import datetime, timedelta
 from .models import Event
+from datetime import date
 # Create your views here.
 from django.http import HttpResponse
 
 #home page
 def home(request):
-    return render(request, 'home.html',{})
+    events = Event.objects
+    # events = Event.objects.filter(start_day__gte=date.today())
+    return render(request, 'home.html',{'events': events})
 
 def eventlist(request):
     events = Event.objects
