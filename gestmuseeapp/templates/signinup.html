@@ -9,55 +9,148 @@
     <title>Musée Dar El Bacha</title>
 </head>
 <body>
+
+  <div class="container">
+    <div class="alert alert-success m-2" id="popup" role="alert"> 
+        {% for message in messages %}
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            {% if message.tags == 'error' %}
+            <script>
+                swal({
+                    title: "Erreur :(",
+                    text: "Le mot de passe que vous avez entrer est incorrect ressayer",
+                    icon: "warning",
+                    buttons: true,
+                  });
+            </script>                    
+            {% elif message.tags == 'warning'%}
+            <script>
+                swal({
+                    title: "Erreur :(",
+                    text: "L'email que vous avez entrer est déjà existé. Merci de le changer",
+                    icon: "warning",
+                    buttons: true,
+                  });
+            </script>
+            {% elif  message.tags == 'info'%}
+            <script>
+                swal({
+                    title: "Erreur :(",
+                    text: "Le mot de passe de confirmation ne correspond pas au premier mot de passe",
+                    icon: "warning",
+                    buttons: true,
+                  });
+            </script>
+            {% else %}
+                <script>
+                    swal({
+                        title: "Très Bien :)",
+                        text: "Votre compte est crée avec succés",
+                        icon: "success",
+                        button: "Login !",
+                      });
+                </script>
+            {% endif %}
+        {% endfor %}
+    </div>
     
-<p class="tip">Click on button in image container</p>
+<p class="tip"></p>
 <div class="cont">
-  <div class="form sign-in">
-    <h2>Welcome back,</h2>
+  <form class="form sign-in" method="post">
+    {% csrf_token %}
+    {{form1.as_p}}
+    <h2>Bienvenue,</h2>
     <label>
       <span>Email</span>
-      <input type="email" />
+      <input type="email" name="username" required/>
     </label>
     <label>
       <span>Password</span>
-      <input type="password" />
+      <input type="password" name="password" required/>
     </label>
-    <p class="forgot-pass">Forgot password?</p>
-    <button type="button" class="submit">Sign In</button>
-    <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
+    <button type="submit" class="submit" name="btnform1">S'abonner</button>
+  </form>
   </div>
   <div class="sub-cont">
     <div class="img">
       <div class="img__text m--up">
-        <h2>New here?</h2>
-        <p>Sign up and discover great amount of new opportunities!</p>
+        <br>
+        <br>
+        <h2>Vous êtes nouveau ici ?</h2>
+        <br>
+        <br>
+        <br>
+        <p>Inscrivez-vous et découvrez un grand nombre de nouvelles opportunités !</p>
       </div>
       <div class="img__text m--in">
-        <h2>One of us?</h2>
-        <p>If you already has an account, just sign in. We've missed you!</p>
+        <br>
+        <br>
+        <h2>L'un d'entre nous ?</h2>
+        <br>
+        <br>
+        <br>
+        <p>Si vous avez déjà un compte, il suffit de vous connecter. Vous nous avez manqué !</p>
       </div>
       <div class="img__btn">
-        <span class="m--up">Sign Up</span>
-        <span class="m--in">Sign In</span>
+        <span class="m--up">S'abonner</span>
+        <span class="m--in">Se connecter</span>
       </div>
     </div>
-    <div class="form sign-up">
-      <h2>Time to feel like home,</h2>
+    <form class="form sign-up" method="post">
+      {% csrf_token %}
+      {{form2.as_p}}
+      <h2>Il est temps de se sentir chez soi,</h2>
       <label>
-        <span>Name</span>
-        <input type="text" />
+        <span>Prénom</span>
+        <input type="text" name="first_name" required />
+      </label>
+      <label>
+        <span>Nom</span>
+        <input type="text" name="last_name" required />
       </label>
       <label>
         <span>Email</span>
-        <input type="email" />
+        <input type="email" name="email" required />
       </label>
       <label>
-        <span>Password</span>
-        <input type="password" />
+        <span>CNI</span>
+        <input type="text" name="cni" required />
       </label>
-      <button type="button" class="submit">Sign Up</button>
-      <button type="button" class="fb-btn">Join with <span>facebook</span></button>
-    </div>
+      <label>
+        <span>Carte de payement</span>
+        <input type="text" name="carte_payement" required />
+      </label>
+      <label>
+        <span>Mot de passe</span>
+        <input type="password" name="password" required />
+      </label>
+      <label>
+        <span>Confirmation de mot de passe</span>
+        <input type="password" name="confirm_password" required />
+      </label>
+      <label>
+        <span>Type d'abonné</span>
+        <select name="type_abonne" required>
+            <option value="">- Sélectionner -</option>
+            <option value="Public">Public</option>
+            <option value="Etudiant">Etudiant</option>
+            <option value="Eleve">Elève</option>
+            <option value="Comité d'entreprise">Comité d'entreprise</option>
+            <option value="Etudiant d'art">Etudiant d'art</option>
+        </select>
+      </label>
+      <label>
+        <span>Type d'abonnement</span>
+        <select name="type_abonnement" required>
+            <option value="">- Sélectionner -</option>
+            <option value="Mensuel">Mensuel</option>
+            <option value="Trimestriel">Trimestriel</option>
+            <option value="Semestriel">Semestriel</option>
+            <option value="Annuel">Annuel</option>
+        </select>
+      </label>
+      <button type="submit" class="submit" name="btnform2">S'abonner</button>
+    </form>
   </div>
 </div>
 

@@ -8,6 +8,7 @@ from .models import Abonnee
 from datetime import datetime, timedelta
 from .models import Event
 from datetime import date
+from allauth.account.models import EmailAddress
 # Create your views here.
 from django.http import HttpResponse
 
@@ -32,38 +33,59 @@ def signinupPage(request):
         last_name = request.POST['last_name']
         email = request.POST['email']
         password1 = request.POST['password']
-        password2 = request.POST['cpassword']
+        password2 = request.POST['confirm_password']
         type_abonnement = request.POST['type_abonnement']
+        type_abonne= request.POST['type_abonne']
+        cni = request.POST['cni']
+        carte_payement= request.POST['carte_payement']
 
         if password1 == password2 :
-            if User.objects.filter(email=email).exists():
+            if Abonnee.objects.filter(email=email).exists():
                 messages.warning(request,'Email taken')
-                return redirect('signinup/')
+                return redirect('signinup')
             else:
-                # myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
-                # myuser.save()
-                # user_model = User.objects.get(username=email)
-                # new_abonne = abonne.objects.create(user=user,id_user=user.id)
-                # new_abonne.save()
-                abonnee = Abonnee.objects.create(prenom=first_name, nom=last_name, email=email, type_abonnement=type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=365), password=password1)
-                abonnee.save()
-                messages.success(request, "Votre compte est crée .")
-                # abonne = abonne.objects.create(prenom=first_name, nom=last_name, email=email, type_abonnement=type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=365), password=password1)
-                # abonne.save()
-                # messages.success(request, "Votre compte est crée .")
-                return redirect('home.html')
+                if type_abonnement == "Mensuel":
+                    abonnee = Abonnee.objects.create(prenom=first_name, nom=last_name, email=email, cni=cni,carte_payement=carte_payement, type_abonne=type_abonne,type_abonnement =type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=30), password=password1)
+                    abonnee.save()
+                    myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
+                    myuser.save()
+                    messages.success(request, "Votre compte a été créé.")
+
+                elif type_abonnement == "Trimestriel":
+                    abonnee = Abonnee.objects.create(prenom=first_name, nom=last_name, email=email, cni=cni,carte_payement=carte_payement, type_abonne=type_abonne, type_abonnement =type_abonnement,date_start=datetime.now(), date_end=datetime.now() + timedelta(days=90), password=password1)
+                    abonnee.save()
+                    myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
+                    myuser.save()
+                    messages.success(request, "Votre compte a été créé.")
+
+                elif type_abonnement == "Semestriel":
+                    abonnee = Abonnee.objects.create(prenom=first_name, nom=last_name, email=email, cni=cni,carte_payement=carte_payement, type_abonne=type_abonne, type_abonnement =type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=183), password=password1)
+                    abonnee.save()
+                    myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
+                    myuser.save()
+                    messages.success(request, "Votre compte a été créé.")
+                elif type_abonnement == "Annuel":
+                    abonnee = Abonnee.objects.create(prenom=first_name, nom=last_name, email=email, cni=cni,carte_payement=carte_payement, type_abonne=type_abonne, type_abonnement =type_abonnement, date_start=datetime.now(), date_end=datetime.now() + timedelta(days=365), password=password1)
+                    abonnee.save()
+                    myuser = User.objects.create_user(username=email, email=email,first_name=first_name,last_name=last_name ,password=password1)
+                    myuser.save()
+                    messages.success(request, "Votre compte a été créé.")
+
+                return redirect('signinup')
         else:
             messages.info(request,'password not matching')
-            return redirect('signinup/')
+            return redirect('signinup')
     if request.method== 'POST' and 'btnform1' in request.POST:
         email = request.POST['username']
         password = request.POST['password']
-        user = auth.authenticate(username=email,password=password)
+        user = auth.authenticate(username=email, password=password)
         if user is not None:
-            auth.login(request,user)
-            return redirect('home.html')
-        else :
-            messages.error(request,"Password missmatchs")
+            auth.login(request, user)
+            print("hey")
+            messages.success(request, "Vous êtes connecté.")
+            return redirect('home')
+        else:
+            messages.error(request, "Invalid email or password.")
             return redirect('signinup')
     else: 
         return render(request, 'signinup.html')

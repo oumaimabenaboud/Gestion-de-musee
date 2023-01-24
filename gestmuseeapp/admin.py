@@ -12,7 +12,7 @@ admin.site.register(Abonnee)
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ['title','theme','start_day', 'end_day', 'image', 'notes']
- 
+
 admin.site.register(Event, Event.EventAdmin)
 admin.site.register(Artist)
 admin.site.register(Oeuvre)

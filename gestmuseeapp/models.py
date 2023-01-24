@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib import admin
 from django.urls import reverse
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.core.exceptions import ValidationError
 from datetime import date
 # Create your models here.
@@ -15,10 +17,11 @@ class Abonnee(models.Model):
     email = models.EmailField(unique=True)
     carte_payement= models.CharField(max_length=16)
     type_abonnement = models.CharField(max_length=255)
+    type_abonne = models.CharField(max_length=255)
     date_start = models.DateField()
     date_end = models.DateField()
     password = models.CharField(max_length=255)
-
+    
 class Artist(models.Model):
     nom = models.CharField(max_length=255)
     date_naissance = models.DateField()
@@ -29,9 +32,10 @@ class Artist(models.Model):
 class Oeuvre(models.Model):
     titre = models.CharField(max_length=255)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    type_ouevre = models.CharField(max_length=255)
+    type_oeuvre = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='static/img/oeuvres')
     prix = models.DecimalField(max_digits=10, decimal_places=2)
-    type_assurence = models.CharField(max_length=255)
+    type_assurance = models.CharField(max_length=255)
 
 class Salle(models.Model):
     nom = models.CharField(max_length=50)
