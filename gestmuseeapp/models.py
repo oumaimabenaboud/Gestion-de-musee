@@ -8,6 +8,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.exceptions import ValidationError
 from datetime import date
+import datetime
 # Create your models here.
 
 class Abonnee(models.Model):
@@ -92,3 +93,22 @@ class Schedule(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     date = models.DateField()
+
+class Reservation(models.Model):
+    prenom = models.CharField(max_length=100)
+    nom = models.CharField(max_length=100)
+    GUIDEE_CHOICES = [
+        (True, 'Guidée'),
+        (False, 'Non Guidée'),
+    ]
+    guidee = models.BooleanField(choices=GUIDEE_CHOICES)
+    nbr_pers = models.IntegerField()
+    date = models.DateField()
+    heure = models.TimeField()
+    
+    def __str__(self):
+        return f'Reservation by {self.prenom} {self.nom} on {self.date} at {self.heure}'
+    
+    def clean(self):
+        if self.date <= datetime.datetime.now().date():
+            raise ValidationError("La date de réservation doit être antérieure à celle d'aujourd'hui")

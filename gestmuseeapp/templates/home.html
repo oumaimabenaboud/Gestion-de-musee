@@ -29,9 +29,9 @@
 			<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
 			<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
 			<link rel="stylesheet" href="{% static 'css/main.css' %}">
+			<link rel="icon" type="image/png" href="{% static 'img/logow12.png'%}"/>
 		</head>
 		<body>
-
 			  <header id="header" id="home">
 			  	<div class="container header-top">
 			  		<div class="row">
@@ -58,11 +58,16 @@
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="{% url 'home' %}">Accueil</a></li>
 				          <li><a href="{% url 'manifestation' %}">Manifestations</a></li>
-						  <li><a href="{% url 'manifestation' %}">Conférences</a></li>
-				          <li><a href="{% url 'contact' %}">Contactez-nous</a></li>
-						  <li><a href="{% url 'signinup' %}" class="primary-btn text-uppercase">S'abonner</a></li>		
-						  <li><a href="{% url 'signinup' %}">S'abonner</a></li>          
-				        </ul>
+						  <li><a href="{% url 'conference' %}">Conférences</a></li>
+						  <li><a href="{% url 'oeuvre' %}">Gallerie</a></li>   
+				          <li><a href="{% url 'contact' %}">Contactez-nous</a></li>						  	
+						  {% if user.is_authenticated %}
+						  	<li><a href="#reserver">Réserver une visite</a></li>
+							<li><a href="/logout"  class="primary-btn text-uppercase">Se déconnecter</a></li>
+						  {% else %}
+						  	<li><a href="{% url 'signinup' %}" class="primary-btn text-uppercase">S'abonner</a></li>		
+						  {% endif %}
+						</ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
 			    </div>
@@ -76,9 +81,19 @@
 				<div class="container">
 					<div class="row fullscreen d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-8">
-							<h1 class="text-white">
-								MUSÉE DES CONFLUENCES DAR EL BACHA				
-							</h1>
+							{% if user.is_authenticated %}
+							{% for abonnee in abonnees %}
+								{% if abonnee.email == user.email %}
+								<h1 class="text-white">
+									Bienvenu(e) au MUSÉE DES CONFLUENCES DAR EL BACHA, {{ abonnee.prenom }}	{{ abonnee.nom }}			
+								</h1>	
+								{% endif %}
+						  {% endfor %}
+						{% else %}
+						<h1 class="text-white">
+							MUSÉE DES CONFLUENCES DAR EL BACHA				
+						</h1>		
+						{% endif %}
 							<br>
 							<br>
 							<p class="pt-20 pb-20 text-white">
@@ -88,8 +103,62 @@
 					</div>
 				</div>					
 			</section>
-			<!-- End banner Area -->	
+			<!-- End banner Area -->
 
+	
+			{% if user.is_authenticated %}
+			<section id="reserver">
+				<div class="container">
+				   <div class="row">
+					  <div class="col-md-12">
+						 <form class="form_book" method="post" action="reservation">
+							{% csrf_token %}
+							{{form}}
+							<div class="row">
+							   <div class="col-md-3">
+								  <label class="date">Nom</label>
+								  <input class="book_n" name="last_name" required />
+							   </div>
+							   <div class="col-md-3">
+								<label class="date">Prénom</label>
+								<input class="book_n"name="first_name" required />
+							 </div>
+							   <div class="col-md-3">
+								<label class="date">Date de la visite</label>
+								<input class="book_n"  type="date" name="date" required />
+							 </div>
+							   <div class="col-md-3">
+								  <label class="date">Heure du début de la visite</label>
+								  <input class="book_n"  type="time" name="heure" required />
+							   </div>
+							   <div class="col-md-3">
+								  <label class="date">Nombre de personnes</label>
+								  <input class="book_n" placeholder="2" type="type" name="nbr" required/>
+							   </div>
+							   <div class="col-md-3">
+								<label class="date">Visite guidée</label><br>
+								<label class="date" for="yes">Yes</label><input type="radio" id="yes" name="choice" value="yes"><br>
+								<label  class="date" for="no">No</label><input type="radio" id="no" name="choice" value="no"> 
+							 </div>	
+							   <div class="col-md-3">
+								  <button class="book_btn" >Réserver</button>
+							   </div>
+							</div>
+						 </form>
+					  </div>
+				   </div>
+				</div>
+			 </section>	
+		  {% endif %}
+
+		  {% if messages %}
+		  <ul class="messages">
+		  {% for message in messages %}
+		  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		  {% endfor %}
+		  </ul>
+		  {% endif %} 
+		  
 			<!-- Start service Area -->
 			<section class="service-area pt-100" id="about">
 				<div class="container">
@@ -220,8 +289,7 @@
 									Ce site est le fruit du travail fait durant le cours de Génie Logiciel S7 MIAAD
 								</p>
 								<p class="footer-text">
-									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
 								</p>
 							</div>
 						</div>

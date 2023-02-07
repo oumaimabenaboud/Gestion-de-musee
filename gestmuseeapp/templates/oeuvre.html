@@ -60,7 +60,7 @@
 					  <li class="menu-active"><a href="{% url 'home' %}">Accueil</a></li>
 					  <li><a href="{% url 'manifestation' %}">Manifestations</a></li>
 					  <li><a href="{% url 'conference' %}">Conférences</a></li>
-					  <li><a href="{% url 'oeuvre' %}">Gallerie</a></li>   
+					  <li><a href="{% url 'oeuvre' %}">Gallerie</a></li>          
 					  <li><a href="{% url 'contact' %}">Contactez-nous</a></li>
 					  {% if user.is_authenticated %}
 					  <li><a href="/#reserver">Réserver une visite</a></li>
@@ -68,6 +68,7 @@
 				  {% else %}
 					  <li><a href="{% url 'signinup' %}" class="primary-btn text-uppercase">S'abonner</a></li>		
 				  {% endif %}	
+
 					</ul>
 				  </nav><!-- #nav-menu-container -->		    		
 				</div>
@@ -81,9 +82,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Manifestations à venir	
+								Gallerie en ligne	
 							</h1>	
-							<p class="text-white link-nav"><a href="{% url 'home' %}">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'manifestation' %}"> Manifestation</a></p>
+							<p class="text-white link-nav"><a href="{% url 'home' %}">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'oeuvre' %}"> Gallerie</a></p>
 						</div>											
 					</div>
 				</div>
@@ -96,22 +97,22 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10">Découvrez nos prochaines manifestations</h1>
+								<h1 class="mb-10">Bienvenu(e) à notre Gallerie en ligne</h1>
 							</div>
 						</div>
 					</div>	
 					<div class="row">
-						{% for event in events.all %}
+						{% for oeuvre in oeuvres.all %}
 						  {% if forloop.counter|divisibleby:2 %}
 							<div class="col-lg-6 event-left">
 						  {% else %}
 							<div class="col-lg-6 event-right">
 						  {% endif %}
 							  <div class="single-events">
-								<img class="img-fluid" src="{{ event.image.url }}" alt="">
-								<a href="#"><h4>{{ event.title}}</h4></a>
-								<h6><span> du {{ event.start_day }}</span> au {{ event.end_day }}</h6>
-								<p>{{ event.notes }}</p>
+								<img class="img-fluid" src="{{ oeuvre.image.url }}" alt="">
+								<a href="#"><h4>{{ oeuvre.titre}}</h4></a>
+								<h6><span> Réalisée par {{ oeuvre.artist.nom }}</span></h6>
+								<p>{{ oeuvre.type_oeuvre }}</p>
 							  </div>
 							</div>
 						{% endfor %}

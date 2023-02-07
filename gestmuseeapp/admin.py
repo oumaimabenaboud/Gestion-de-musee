@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Abonnee, Oeuvre, Artist, Salle, Conference, Personel, Schedule, Event
+from .models import Abonnee, Oeuvre, Artist, Salle, Conference, Personel, Schedule, Event, Reservation
 import datetime
 import calendar
 from django.urls import reverse
@@ -20,3 +20,4 @@ admin.site.register(Salle)
 admin.site.register(Personel)
 admin.site.register(Schedule)
 admin.site.register(Conference)
+admin.site.register(Reservation)

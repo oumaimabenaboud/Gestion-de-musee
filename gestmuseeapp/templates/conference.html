@@ -67,7 +67,7 @@
 					<li><a href="/logout" class="primary-btn text-uppercase">Se déconnecter</a></li>
 				  {% else %}
 					  <li><a href="{% url 'signinup' %}" class="primary-btn text-uppercase">S'abonner</a></li>		
-				  {% endif %}	
+				  {% endif %}
 					</ul>
 				  </nav><!-- #nav-menu-container -->		    		
 				</div>
@@ -81,9 +81,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Manifestations à venir	
+								Conférences à venir	
 							</h1>	
-							<p class="text-white link-nav"><a href="{% url 'home' %}">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'manifestation' %}"> Manifestation</a></p>
+							<p class="text-white link-nav"><a href="{% url 'home' %}">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'conference' %}"> Conférences</a></p>
 						</div>											
 					</div>
 				</div>
@@ -96,22 +96,22 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10">Découvrez nos prochaines manifestations</h1>
+								<h1 class="mb-10">Découvrez nos prochaines conférences</h1>
 							</div>
 						</div>
 					</div>	
 					<div class="row">
-						{% for event in events.all %}
+						{% for conference in conferences.all %}
 						  {% if forloop.counter|divisibleby:2 %}
 							<div class="col-lg-6 event-left">
 						  {% else %}
 							<div class="col-lg-6 event-right">
 						  {% endif %}
 							  <div class="single-events">
-								<img class="img-fluid" src="{{ event.image.url }}" alt="">
-								<a href="#"><h4>{{ event.title}}</h4></a>
-								<h6><span> du {{ event.start_day }}</span> au {{ event.end_day }}</h6>
-								<p>{{ event.notes }}</p>
+								<img class="img-fluid" src="{{ conference.image.url }}" alt="">
+								<a href="#"><h4>{{ conference.titre}}</h4></a>
+								<h6><span> du {{ conference.date_debut }}</span> par {{ conference.Conferencier }}</h6>
+								<p>{{ conference.notes }}</p>
 							  </div>
 							</div>
 						{% endfor %}

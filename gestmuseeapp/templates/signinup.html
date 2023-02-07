@@ -3,7 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/logow12.png'%}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/signinup.css' %}">
     <title>Musée Dar El Bacha</title>
@@ -42,95 +45,73 @@
                   });
             </script>
             {% else %}
-                <script>
+              <script>
                     swal({
                         title: "Très Bien :)",
                         text: "Votre compte est crée avec succés",
                         icon: "success",
                         button: "Login !",
                       });
-                </script>
+              </script>
             {% endif %}
         {% endfor %}
     </div>
-    
-<p class="tip"></p>
-<div class="cont">
-  <form class="form sign-in" method="post">
-    {% csrf_token %}
-    {{form1.as_p}}
-    <h2>Bienvenue,</h2>
-    <label>
-      <span>Email</span>
-      <input type="email" name="username" required/>
-    </label>
-    <label>
-      <span>Password</span>
-      <input type="password" name="password" required/>
-    </label>
-    <button type="submit" class="submit" name="btnform1">S'abonner</button>
-  </form>
-  </div>
-  <div class="sub-cont">
-    <div class="img">
-      <div class="img__text m--up">
-        <br>
-        <br>
-        <h2>Vous êtes nouveau ici ?</h2>
-        <br>
-        <br>
-        <br>
-        <p>Inscrivez-vous et découvrez un grand nombre de nouvelles opportunités !</p>
+  <div class="forms-container">
+    <div class="signin-signup">
+          
+    <!--                    Sign in Forum                 -->
+    <form class="sign-in-form" method="post">   
+      {% csrf_token %}
+      {{form1.as_p}}
+      <h2>Bienvenue,</h2>
+      <div class="input-field">
+      <i class="fas fa-user"></i>
+      <input type="texte" placeholder="Email" name="username" required/>
       </div>
-      <div class="img__text m--in">
-        <br>
-        <br>
-        <h2>L'un d'entre nous ?</h2>
-        <br>
-        <br>
-        <br>
-        <p>Si vous avez déjà un compte, il suffit de vous connecter. Vous nous avez manqué !</p>
-      </div>
-      <div class="img__btn">
-        <span class="m--up">S'abonner</span>
-        <span class="m--in">Se connecter</span>
-      </div>
+      <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Mot de passe" name="password" required/>
     </div>
-    <form class="form sign-up" method="post">
+      <input class="btn solid" type="submit" value="Connecter" name="btnform1"/>
+    </form>
+ 
+    <form class="sign-up-form" method="post">
       {% csrf_token %}
       {{form2.as_p}}
       <h2>Il est temps de se sentir chez soi,</h2>
-      <label>
-        <span>Prénom</span>
-        <input type="text" name="first_name" required />
-      </label>
-      <label>
-        <span>Nom</span>
-        <input type="text" name="last_name" required />
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" required />
-      </label>
-      <label>
-        <span>CNI</span>
-        <input type="text" name="cni" required />
-      </label>
-      <label>
-        <span>Carte de payement</span>
-        <input type="text" name="carte_payement" required />
-      </label>
-      <label>
-        <span>Mot de passe</span>
-        <input type="password" name="password" required />
-      </label>
-      <label>
-        <span>Confirmation de mot de passe</span>
-        <input type="password" name="confirm_password" required />
-      </label>
-      <label>
-        <span>Type d'abonné</span>
-        <select name="type_abonne" required>
+      <div class="input-name">
+        <div class="input-field-custom" id="test1">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Prénom" name="first_name" required/>
+        </div>  
+        <div class="input-field-custom" id="test2">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Nom" name="last_name" required/>
+      </div>
+    </div>
+      <div class="input-field" id="formulaire">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="Email" name="email" required/>
+    </div>
+    <div class="input-field" id="formulaire">
+      <i class="fas fa-address-card"></i>
+        <input type="text" placeholder="CNI" name="cni" required />
+    </div>
+    <div class="input-field" id="formulaire">
+      <i class="fas fa-credit-card"></i>
+      <input type="text" placeholder="Carte de payement" name="carte_payement" required />
+    </div>
+      <div class="input-field" id="formulaire">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Mot de passe" name="password" required/>
+      </div>
+      <div class="input-field" id="formulaire">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Confirmer Mot de passe" name="cpassword" required/>
+      </div>
+      <div class="input-field" id="formulaire">
+        <i class="fas fa-list"></i>
+        <select placeholder="Type d'abonné(e)"  name="type_abonne" required>
             <option value="">- Sélectionner -</option>
             <option value="Public">Public</option>
             <option value="Etudiant">Etudiant</option>
@@ -138,22 +119,43 @@
             <option value="Comité d'entreprise">Comité d'entreprise</option>
             <option value="Etudiant d'art">Etudiant d'art</option>
         </select>
-      </label>
-      <label>
-        <span>Type d'abonnement</span>
-        <select name="type_abonnement" required>
+      </div>
+      <div class="input-field" id="formulaire">
+        <i class="fas fa-list"></i>
+        <select placeholder="Type d'abonnement" name="type_abonnement" required>
             <option value="">- Sélectionner -</option>
             <option value="Mensuel">Mensuel</option>
             <option value="Trimestriel">Trimestriel</option>
             <option value="Semestriel">Semestriel</option>
             <option value="Annuel">Annuel</option>
         </select>
-      </label>
-      <button type="submit" class="submit" name="btnform2">S'abonner</button>
+      </div>
+      <input type="submit" class="btn" value="S'abonner" id="formulaire" name="btnform2"/>
     </form>
   </div>
 </div>
 
-<script src="{% static 'js/signinup.js' %}"></script>	
+<div class="panels-container">
+  <div class="panel left-panel">
+      <div class="content">
+          <h3>Vous êtes nouveau ici ?</h3>
+          <p>
+            Inscrivez-vous et découvrez un grand nombre de nouvelles opportunités !
+          </p>
+          <button class="btn transparent" id="sign-up-btn">S'abonner</button>
+      </div>
+  </div>
+  <div class="panel right-panel">
+      <div class="content">
+          <h3>L'un d'entre nous ?</h3>
+          <p>
+            Si vous avez déjà un compte, il suffit de vous connecter. Vous nous avez manqué !
+          </p>
+          <button class="btn transparent" id="sign-in-btn">Se connecter</button>
+      </div>
+  </div>
+</div>
+</div>
+<script src="{% static 'js/Signinup.js' %}"></script>
 </body>
 </html>

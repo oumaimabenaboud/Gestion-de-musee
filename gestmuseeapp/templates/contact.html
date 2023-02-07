@@ -29,6 +29,7 @@
 			<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
 			<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
 			<link rel="stylesheet" href="{% static 'css/main.css' %}">
+			<link rel="icon" type="image/png" href="{% static 'img/logow12.png'%}"/>
 		</head>
 		<body>
 
@@ -58,10 +59,15 @@
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="{% url 'home' %}">Accueil</a></li>
 				          <li><a href="{% url 'manifestation' %}">Manifestations</a></li>
-						  <li><a href="{% url 'manifestation' %}">Conférences</a></li>
+						  <li><a href="{% url 'conference' %}">Conférences</a></li>
+						  <li><a href="{% url 'oeuvre' %}">Gallerie</a></li>   
 				          <li><a href="{% url 'contact' %}">Contactez-nous</a></li>
-						  <li><a href="{% url 'signinup' %}" class="primary-btn text-uppercase">S'abonner</a></li>		
-						  <li><a href="{% url 'signinup' %}">S'abonner</a></li>          
+						  {% if user.is_authenticated %}
+						  <li><a href="/#reserver">Réserver une visite</a></li>
+						  <li><a href="/logout"  class="primary-btn text-uppercase">Se déconnecter</a></li>
+						  {% else %}
+						  	<li><a href="{% url 'signinup' %}" class="primary-btn text-uppercase">S'abonner</a></li>		
+						  {% endif %}	
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
