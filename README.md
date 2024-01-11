@@ -4,14 +4,18 @@ This repository contains the source code and documentation for a web application
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Use Case Diagrams](#use-case-diagrams)
-3. [Sequence Diagrams](#sequence-diagrams)
-4. [Class Diagram](#class-diagram)
-5. [Application Interfaces](#application-interfaces)
-6. [Technical Details](#technical-details)
-7. [Setup Instructions](#setup-instructions)
+2. [Package Diagram](#package-diagram)
+3. [Use Case Diagrams](#use-case-diagrams)
+4. [Sequence Diagrams](#sequence-diagrams)
+5. [Class Diagram](#class-diagram)
+6. [Application Interfaces](#application-interfaces)
+7. [Technical Details](#technical-details)
+8. [Setup Instructions](#setup-instructions)
 
 ## Introduction
+
+### Package Diagram
+![image](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/b4fa32a6-b964-4f2e-b776-324d393fd8e8)
 
 ### Use Case Diagrams
 Use case diagrams provide a representation of the functional behavior of a software system. The main elements include Actors, Use Cases, and Relationships.
@@ -21,14 +25,14 @@ Use case diagrams provide a representation of the functional behavior of a softw
 
 
 - **Use Case Diagram for Conference Management:**
-  ![Use Case Diagram for Conference Management](./path/to/image)
+  ![Use Case Diagram for Conference Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/b7ed01cd-3de2-49e8-bfc3-96efe18f983f)
 
 - **Use Case Diagram for Artwork and Artist Management:**
-  ![Use Case Diagram for Artwork and Artist Management](./path/to/image)
+  ![Use Case Diagram for Artwork and Artist Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/9ea5cdeb-7a54-41b3-ab97-799e3fa2a317)
 
 - **Use Case Diagram for Visit Management:**
-  ![Use Case Diagram for Visit Management](./path/to/image)
-
+  ![Use Case Diagram for Visit Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/502d5cbe-75cd-45d8-92c9-ed95dd7fd81a)
+  
 ### Sequence Diagrams
 Sequence diagrams graphically represent interactions between actors and the system in chronological order within the UML framework.
 
