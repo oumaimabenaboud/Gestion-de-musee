@@ -17,7 +17,8 @@ This repository contains the source code and documentation for a web application
 Use case diagrams provide a representation of the functional behavior of a software system. The main elements include Actors, Use Cases, and Relationships.
 
 - **Use Case Diagram for Customer Management:**
-  ![Use Case Diagram for Customer Management](![image](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/a274bcd9-31a3-45cc-851d-6eebf1985b05))
+ ![Use Case Diagram for Customer Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/580ee720-c731-46a7-b9dc-45d6548257a8)
+
 
 - **Use Case Diagram for Conference Management:**
   ![Use Case Diagram for Conference Management](./path/to/image)
