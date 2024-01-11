@@ -35,7 +35,6 @@ Sequence diagrams graphically represent interactions between actors and the syst
 ### Class Diagram
 The class diagram serves as the central point in object-oriented development, representing the static structure of the system in terms of classes and relationships.
 
-- **Class Diagram:**
   ![Class Diagram](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/cc738533-7b1c-4432-84cd-d2e947e13077)
 
 
