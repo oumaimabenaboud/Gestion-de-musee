@@ -8,7 +8,7 @@ This repository contains the source code and documentation for a web application
 3. [Use Case Diagrams](#use-case-diagrams)
 4. [Sequence Diagrams](#sequence-diagrams)
 5. [Class Diagram](#class-diagram)
-6. [Application Interfaces](#application-interfaces)
+6. [Application Interface](#application-interface)
 7. [Setup Instructions](#setup-instructions)
 
 ## Introduction
@@ -52,9 +52,9 @@ The class diagram serves as the central point in object-oriented development, re
   ![Class Diagram](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/cc738533-7b1c-4432-84cd-d2e947e13077)
 
 
-## Application Interfaces
+## Application Interface
 
-In this technical section, we provide an overview of the languages used, development tools, and examples of application interfaces.
+In this technical section, we provide an overview of the languages used, development tools, and screenshots of the web application's interface
 
 - **Languages Used:**
   - Python
