@@ -16,7 +16,7 @@ Welcome to the dynamic tourist website showcasing the Dar El Bacha Museum in Mar
 The project aims to provide an engaging online platform that highlights the cultural richness of the Dar El Bacha Museum, offering visitors a virtual tour and comprehensive information about its exhibits, artists, events, and more.
 
 ### Package Diagram
-![image](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/b4fa32a6-b964-4f2e-b776-324d393fd8e8)
+![image](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/b9bcea8d-b881-4a05-8780-9661256ab51a)
 
 ### Use Case Diagrams
 Use case diagrams provide a representation of the functional behavior of a software system. The main elements include Actors, Use Cases, and Relationships.
