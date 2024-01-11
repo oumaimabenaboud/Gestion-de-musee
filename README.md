@@ -12,6 +12,8 @@ This repository contains the source code and documentation for a web application
 7. [Setup Instructions](#setup-instructions)
 
 ## Introduction
+Welcome to the dynamic tourist website showcasing the Dar El Bacha Museum in Marrakech, Morocco.
+The project aims to provide an engaging online platform that highlights the cultural richness of the Dar El Bacha Museum, offering visitors a virtual tour and comprehensive information about its exhibits, artists, events, and more.
 
 ### Package Diagram
 ![image](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/b4fa32a6-b964-4f2e-b776-324d393fd8e8)
