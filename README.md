@@ -79,7 +79,7 @@ In this technical section, we provide an overview of the languages used, develop
     ![Contact and Location Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/9976474d-e5d5-4fff-a18a-fed85c742b6a)
 
   - Login Page
-    ![Login Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/a2f065bc-1fbb-425f-b482-a7682bd589da)
+    ![Login Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/a631d5c8-ad78-4d9a-bdeb-b34f36d60370)
 
   - Subscription Page
     ![Subscription Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/a89fc43e-dd8c-4442-a7cf-ff7cd821fa91)
