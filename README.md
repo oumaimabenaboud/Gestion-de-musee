@@ -9,8 +9,7 @@ This repository contains the source code and documentation for a web application
 4. [Sequence Diagrams](#sequence-diagrams)
 5. [Class Diagram](#class-diagram)
 6. [Application Interfaces](#application-interfaces)
-7. [Technical Details](#technical-details)
-8. [Setup Instructions](#setup-instructions)
+7. [Setup Instructions](#setup-instructions)
 
 ## Introduction
 
@@ -37,19 +36,21 @@ Use case diagrams provide a representation of the functional behavior of a softw
 Sequence diagrams graphically represent interactions between actors and the system in chronological order within the UML framework.
 
 - **Sequence Diagram: Administration Management**
-  ![Sequence Diagram: Administration Management](./path/to/image)
+  ![Sequence Diagram: Administration Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/276dc1a8-d929-4541-a038-626f729cc5a7)
 
 - **Sequence Diagram: Subscriber Management**
-  ![Sequence Diagram: Subscriber Management](./path/to/image)
+  ![Sequence Diagram: Subscriber Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/97ccf8db-253d-4bf8-a452-2810d9356b3f)
 
 - **Sequence Diagram: Non-subscriber Management**
-  ![Sequence Diagram: Non-subscriber Management](./path/to/image)
+  ![Sequence Diagram: Non-subscriber Management](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/b94be0d8-b0ff-4585-bf86-033a557bbcdc)
+
 
 ### Class Diagram
 The class diagram serves as the central point in object-oriented development, representing the static structure of the system in terms of classes and relationships.
 
 - **Class Diagram:**
-  ![Class Diagram](./path/to/image)
+  ![Class Diagram](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/cc738533-7b1c-4432-84cd-d2e947e13077)
+
 
 ## Application Interfaces
 
@@ -60,40 +61,35 @@ In this technical section, we provide an overview of the languages used, develop
   - Django Framework
 
 - **Development Tools:**
-  - [List of development tools used]
+  - Visual Studio Code
+  - Github
+  - PostgreSQL
 
 - **Application Interfaces:**
   - Home Page
-    ![Home Page](./path/to/image)
+    ![Home Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/94d8e9ca-9a5c-4753-b27b-8bae71a5c3ee)
 
   - Upcoming Events Page
-    ![Upcoming Events Page](./path/to/image)
+    ![Upcoming Events Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/e59f5aad-7e45-41a6-bfcd-02a363e3340a)
 
   - Artwork and Artist Exhibition Page
-    ![Artwork and Artist Exhibition Page](./path/to/image)
+    ![Artwork and Artist Exhibition Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/59ab9518-439b-4088-bf2e-5e48be9c0921)
 
   - Museum Contact and Location Page
-    ![Contact and Location Page](./path/to/image)
+    ![Contact and Location Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/9976474d-e5d5-4fff-a18a-fed85c742b6a)
 
   - Login Page
-    ![Login Page](./path/to/image)
+    ![Login Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/a2f065bc-1fbb-425f-b482-a7682bd589da)
 
   - Subscription Page
-    ![Subscription Page](./path/to/image)
+    ![Subscription Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/a89fc43e-dd8c-4442-a7cf-ff7cd821fa91)
 
   - Subscriber Home Page
-    ![Subscriber Home Page](./path/to/image)
+    ![Subscriber Home Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/49258778-7813-401d-aaac-cd5b8efbad8b)
 
   - Reservation Page
-    ![Reservation Page](./path/to/image)
+    ![Reservation Page](https://github.com/oumaimabenaboud/Gestion-de-musee/assets/120368654/04969ef9-f236-4c3a-a0ea-0a0b3631063d)
 
-## Technical Details
-
-[Include technical details about the project, such as specific libraries, dependencies, and setup instructions.]
-
-Feel free to explore the source code and documentation for a more in-depth understanding of the project. If you have any questions or issues, please don't hesitate to reach out.
-
-Thank you for your interest in our Museum Management Web Application!
 
 ## Setup Instructions
 
